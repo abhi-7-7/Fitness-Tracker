@@ -15,11 +15,13 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Save user data
     const userData = {
-      name: 'User',
+      name: 'User', // In a real app, this would come from your backend
       email: form.email
     };
     localStorage.setItem('user', JSON.stringify(userData));
+    // Redirect to home page
     window.location.pathname = '/';
   };
 
