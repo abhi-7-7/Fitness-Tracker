@@ -1,13 +1,15 @@
 import React from 'react';
 import Navbar from './Navbar';
 
-function Layout({ children }) {
+const Layout = ({ children, onNavigate }) => {
   return (
-    <div>
-      <Navbar />
-      <main>{children}</main>
+    <div className="layout">
+      <Navbar onNavigate={onNavigate} />
+      <main className="main-content">
+        {children}
+      </main>
     </div>
   );
-}
+};
 
 export default Layout; 

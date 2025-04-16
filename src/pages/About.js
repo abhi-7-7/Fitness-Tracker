@@ -1,12 +1,16 @@
 import React from 'react';
 
-function About() {
+const About = () => {
   return (
-    <div>
-      <h1>About Page</h1>
-      <p>Welcome to the About page.</p>
+    <div className="about-page">
+      <h1 className="page-title">About Us</h1>
+      <div className="content-section">
+        <p className="about-text">
+          ----------------------------------
+        </p>
+      </div>
     </div>
   );
-}
+};
 
 export default About; 

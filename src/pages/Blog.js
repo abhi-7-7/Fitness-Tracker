@@ -1,12 +1,25 @@
 import React from 'react';
 
-function Blog() {
+const Blog = () => {
   return (
-    <div>
-      <h1>Blog Page</h1>
-      <p>Welcome to the Blog page.</p>
+    <div className="blog-page">
+      <h1 className="page-title">Our Blog</h1>
+      <div className="blog-posts">
+        <div className="blog-post">
+          <h2>5 Tips for Starting Your Fitness Journey</h2>
+          <p>--------------------------------------</p>
+        </div>
+        <div className="blog-post">
+          <h2>Nutrition Myths Debunked</h2>
+          <p>--------------------------------------</p>
+        </div>
+        <div className="blog-post">
+          <h2>Workout Recovery: Why It Matters</h2>
+          <p>--------------------------</p>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default Blog; 

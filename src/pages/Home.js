@@ -1,12 +1,16 @@
 import React from 'react';
 
-function Home() {
+const Home = () => {
   return (
-    <div>
-      <h1>Home Page</h1>
-      <p>Welcome to the Home page.</p>
+    <div className="home-page">
+      <h1 className="page-title">Welcome to Health & Fitness</h1>
+      <div className="content-section">
+        <p className="welcome-text">
+          ---------------------------------------
+        </p>
+      </div>
     </div>
   );
-}
+};
 
 export default Home; 
