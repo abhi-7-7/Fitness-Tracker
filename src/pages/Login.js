@@ -1,59 +1,61 @@
 import React, { useState } from 'react';
 
 const Login = () => {
-  const [formData, setFormData] = useState({
+  const [form, setForm] = useState({
     email: '',
     password: ''
   });
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
+  const handleInput = (e) => {
+    setForm({
+      ...form,
       [e.target.name]: e.target.value
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically handle the login logic
-    console.log('Login attempt:', formData);
+    const userData = {
+      name: 'User',
+      email: form.email
+    };
+    localStorage.setItem('user', JSON.stringify(userData));
+    window.location.pathname = '/';
   };
 
   return (
     <div className="auth-page">
       <div className="auth-container">
-        <h2 className="auth-title">Login</h2>
-        <form onSubmit={handleSubmit} className="auth-form">
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Email</label>
             <input
               type="email"
-              id="email"
               name="email"
-              value={formData.email}
-              onChange={handleChange}
+              value={form.email}
+              onChange={handleInput}
               required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
+          <div>
+            <label>Password</label>
             <input
               type="password"
-              id="password"
               name="password"
-              value={formData.password}
-              onChange={handleChange}
+              value={form.password}
+              onChange={handleInput}
               required
             />
           </div>
-          <button type="submit" className="auth-submit-btn">Login</button>
+          <button type="submit">Login</button>
         </form>
-        <p className="auth-switch">
-          Don't have an account? <a href="/signup" className="auth-link">Sign Up</a>
+        <p>
+          Don't have an account? <a href="/signup">Sign Up</a>
         </p>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Login; 
