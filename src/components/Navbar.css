@@ -1,0 +1,282 @@
+:root {
+    --nav-primary: #4CAF50; 
+    --nav-primary-hover: #81C784;  
+    --nav-accent: #FF5722;        
+    --nav-accent-hover: #FFAB91;   
+    --nav-text: #E0E0E0;           
+    --nav-text-light: #FFFFFF;     
+    --nav-bg: rgba(18, 18, 18, 0.85); 
+    --nav-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --nav-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --nav-border: rgba(76, 175, 80, 0.15);
+  }
+  
+  /* Main Navbar Container */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--nav-bg);
+    box-shadow: var(--nav-shadow);
+    z-index: 1000;
+    padding: 0.5rem 0;
+    transition: var(--nav-transition);
+    border-bottom: 1px solid var(--nav-border);
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Inner Container */
+  .container {
+    max-width: 1800px;
+    width: 98%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+  
+  /* Logo Styling */
+  .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--nav-primary);
+    background: linear-gradient(135deg, #81C784 0%, #4CAF50 100%);
+    /* -webkit-background-clip: text; */
+    background-clip: text; /* Standard property */
+    transition: var(--nav-transition);
+    cursor: pointer;
+    padding: 0.25rem 0;
+    letter-spacing: -0.5px;
+    margin-right: 0;
+    margin-left: 0;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+  
+  .logo:hover {
+    transform: scale(1.02);
+    opacity: 1;
+    filter: brightness(1.1);
+  }
+  
+  /* Menu Items Container */
+  .menuItems {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    justify-content: center;
+    margin-left: 4rem;
+  }
+  
+  /* Individual Menu Item */
+  .menuItem {
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    color: var(--nav-text);
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    transition: var(--nav-transition);
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  
+  /* Animated Underline Effect */
+  .menuItem::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0.75rem;
+    width: calc(100% - 1.5rem);
+    height: 2px;
+    background: var(--nav-primary);
+    transition: var(--nav-transition);
+    opacity: 0;
+    transform: scaleX(0.8);
+  }
+  
+  .menuItem:hover::after {
+    opacity: 0.7;
+    transform: scaleX(1);
+  }
+  
+  .menuItem:hover {
+    color: var(--nav-primary-hover);
+    opacity: 1;
+  }
+  
+  /* Active Menu Item */
+  .menuItemActive {
+    color: var(--nav-primary);
+    font-weight: 600;
+    opacity: 1;
+  }
+  
+  .menuItemActive::after {
+    opacity: 0.8;
+    transform: scaleX(1);
+  }
+  
+  /* Auth Buttons Container */
+  .authButtons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+  }
+  
+  /* User Greeting */
+  .user-greeting {
+    color: var(--nav-text);
+    margin-right: 1rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  
+  /* User Info Container */
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Button Styling */
+  .button {
+    padding: 0.6rem 1.6rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--nav-transition);
+    border: none;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.9) 0%, rgba(46, 125, 50, 0.9) 100%);
+    color: var(--nav-text-light);
+    outline: none;
+  }
+  
+  .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
+    background: linear-gradient(135deg, rgba(76, 175, 80, 1) 0%, rgba(46, 125, 50, 1) 100%);
+  }
+  
+  .button:focus {
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
+  }
+  
+  /* Mobile Menu Button */
+  .menuButton {
+    display: none;
+    flex-direction: column;
+    gap: 0.35rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .menuButtonSpan {
+    width: 24px;
+    height: 2px;
+    background: var(--nav-primary);
+    border-radius: 2px;
+    opacity: 0.8;
+    transition: var(--nav-transition);
+  }
+  
+  /* Mobile Navigation */
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 1.25rem;
+    }
+  
+    .menuButton {
+      display: flex;
+    }
+  
+    .logo {
+      font-size: 1.5rem;
+    }
+  
+    .menuItems {
+      position: fixed;
+      top: 4rem;
+      left: 0;
+      width: 100%;
+      background: rgba(18, 18, 18, 0.95);
+      backdrop-filter: blur(10px);
+      /* -webkit-backdrop-filter: blur(10px); */
+      flex-direction: column;
+      padding: 1.5rem;
+      gap: 1.25rem;
+      box-shadow: var(--nav-shadow);
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--nav-transition);
+      border-bottom: 1px solid var(--nav-border);
+    }
+  
+    .menuItems.active {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+  
+    .authButtons {
+      display: none;
+    }
+  
+    .authButtons.active {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 1rem 0;
+      gap: 1rem;
+    }
+  
+    /* Animated Hamburger Menu */
+    .menuButton.active .menuButtonSpan:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+      opacity: 1;
+    }
+  
+    .menuButton.active .menuButtonSpan:nth-child(2) {
+      opacity: 0;
+    }
+  
+    .menuButton.active .menuButtonSpan:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+      opacity: 1;
+    }
+  
+    /* Mobile User Info */
+    .user-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+  }
+  
+  /* Scroll Effect */
+  .navbar.scrolled {
+    padding: 0.5rem 0;
+    background: rgba(18, 18, 18, 0.92);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  } 

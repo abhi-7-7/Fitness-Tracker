@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import './Navbar.css';
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   // Check for user data on component mount
   useEffect(() => {
@@ -9,10 +12,26 @@ const Navbar = () => {
     if (userData) {
       setUser(JSON.parse(userData));
     }
-  }, []);
 
-  // Simple state for menu toggle
-  const [menuOpen, setMenuOpen] = useState(false);
+    // Add scroll event listener
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    // Initial check for scroll position
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   // Simple navigation function
   const goToPage = (path) => {
@@ -22,7 +41,7 @@ const Navbar = () => {
 
   // Check if current page is active
   const checkActive = (path) => {
-    return window.location.pathname === path ? 'active' : '';
+    return window.location.pathname === path ? 'menuItemActive' : '';
   };
 
   // Handle logout
@@ -32,107 +51,50 @@ const Navbar = () => {
     goToPage('/');
   };
 
-  // Basic styles
-  const styles = {
-    navbar: {
-      backgroundColor: '#f8f9fa',
-      padding: '10px 20px',
-      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-    },
-    container: {
-      maxWidth: '1200px',
-      margin: '0 auto',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-    },
-    logo: {
-      fontSize: '24px',
-      fontWeight: 'bold',
-      color: '#333',
-      cursor: 'pointer',
-    },
-    menuButton: {
-      display: 'none',
-      flexDirection: 'column',
-      cursor: 'pointer',
-    },
-    menuButtonSpan: {
-      width: '25px',
-      height: '3px',
-      backgroundColor: '#333',
-      margin: '2px 0',
-      transition: '0.3s',
-    },
-    menuItems: {
-      display: 'flex',
-      gap: '20px',
-    },
-    menuItem: {
-      cursor: 'pointer',
-      padding: '5px 10px',
-      color: '#333',
-    },
-    menuItemActive: {
-      color: '#007bff',
-      fontWeight: 'bold',
-    },
-    authButtons: {
-      display: 'flex',
-      gap: '10px',
-    },
-    button: {
-      padding: '8px 16px',
-      border: 'none',
-      borderRadius: '4px',
-      cursor: 'pointer',
-      backgroundColor: '#007bff',
-      color: 'white',
-    },
-  };
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuOpen && !event.target.closest('.menuItems') && !event.target.closest('.menuButton')) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [menuOpen]);
 
   return (
-    <nav style={styles.navbar}>
-      <div style={styles.container}>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <div className="container">
         {/* Logo */}
-        <div style={styles.logo} onClick={() => goToPage('/')}>
+        <div className="logo" onClick={() => goToPage('/')}>
           Health & Fitness
         </div>
 
         {/* Navigation Menu */}
-        <div style={styles.menuItems}>
+        <div className={`menuItems ${menuOpen ? 'active' : ''}`}>
           <span 
-            style={{
-              ...styles.menuItem,
-              ...(checkActive('/') && styles.menuItemActive)
-            }}
+            className={`menuItem ${checkActive('/')}`}
             onClick={() => goToPage('/')}
           >
             Home
           </span>
           <span 
-            style={{
-              ...styles.menuItem,
-              ...(checkActive('/about') && styles.menuItemActive)
-            }}
+            className={`menuItem ${checkActive('/about')}`}
             onClick={() => goToPage('/about')}
           >
             About
           </span>
           <span 
-            style={{
-              ...styles.menuItem,
-              ...(checkActive('/services') && styles.menuItemActive)
-            }}
+            className={`menuItem ${checkActive('/services')}`}
             onClick={() => goToPage('/services')}
           >
             Services
           </span>
           <span 
-            style={{
-              ...styles.menuItem,
-              ...(checkActive('/blog') && styles.menuItemActive)
-            }}
+            className={`menuItem ${checkActive('/blog')}`}
             onClick={() => goToPage('/blog')}
           >
             Blog
@@ -140,13 +102,14 @@ const Navbar = () => {
         </div>
 
         {/* User Info or Auth Buttons */}
-        <div style={styles.authButtons}>
+        <div className={`authButtons ${menuOpen ? 'active' : ''}`}>
           {user ? (
             <div className="user-info">
-              <span>Hello, {user.name}</span>
+              <span className="user-greeting">Hello, {user.name}</span>
               <button 
-                style={styles.button}
+                className="button"
                 onClick={handleLogout}
+                aria-label="Logout"
               >
                 Logout
               </button>
@@ -154,34 +117,34 @@ const Navbar = () => {
           ) : (
             <>
               <button 
-                style={styles.button}
+                className="button"
                 onClick={() => goToPage('/login')}
+                aria-label="Login"
               >
                 Login
               </button>
               <button 
-                style={styles.button}
+                className="button"
                 onClick={() => goToPage('/signup')}
+                aria-label="Sign Up"
               >
                 Sign Up
               </button>
             </>
           )}
-
-          {/* Menu Button */}
-          <div 
-            style={{
-              ...styles.menuButton,
-              display: 'flex', padding: '10px 20px',justifyContent: 'center',
-              alignItems: 'center',
-            }}
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            <span style={styles.menuButtonSpan}></span>
-            <span style={styles.menuButtonSpan}></span>
-            <span style={styles.menuButtonSpan}></span>
-          </div>
         </div>
+
+        {/* Menu Button */}
+        <button 
+          className={`menuButton ${menuOpen ? 'active' : ''}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+        >
+          <span className="menuButtonSpan"></span>
+          <span className="menuButtonSpan"></span>
+          <span className="menuButtonSpan"></span>
+        </button>
       </div>
     </nav>
   );
