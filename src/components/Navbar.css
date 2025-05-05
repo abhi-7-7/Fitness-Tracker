@@ -20,7 +20,7 @@
     background: var(--nav-bg);
     box-shadow: var(--nav-shadow);
     z-index: 1000;
-    padding: 0.5rem 0;
+    padding: 1.5rem 0;
     transition: var(--nav-transition);
     border-bottom: 1px solid var(--nav-border);
     backdrop-filter: blur(10px);
@@ -44,7 +44,6 @@
     font-weight: 700;
     color: var(--nav-primary);
     background: linear-gradient(135deg, #81C784 0%, #4CAF50 100%);
-    /* -webkit-background-clip: text; */
     background-clip: text; /* Standard property */
     transition: var(--nav-transition);
     cursor: pointer;
@@ -214,12 +213,11 @@
   
     .menuItems {
       position: fixed;
-      top: 4rem;
-      left: 0;
-      width: 100%;
+      top: 6rem;
+      right: 20px;
+      width: 30%;
       background: rgba(18, 18, 18, 0.95);
       backdrop-filter: blur(10px);
-      /* -webkit-backdrop-filter: blur(10px); */
       flex-direction: column;
       padding: 1.5rem;
       gap: 1.25rem;
@@ -243,7 +241,7 @@
   
     .authButtons.active {
       display: flex;
-      flex-direction: column;
+      flex-direction: row-reverse;
       width: 100%;
       padding: 1rem 0;
       gap: 1rem;

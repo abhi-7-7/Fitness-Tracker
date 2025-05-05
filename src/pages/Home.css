@@ -186,27 +186,6 @@
     z-index: 3;
   }
   
-  .fitness-text {
-    position: absolute;
-    font-size: 9rem;
-    font-weight: 900;
-    opacity: 0.18;
-    color: #fff;
-    z-index: 2;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-transform: uppercase;
-    letter-spacing: 0.5rem;
-    white-space: nowrap;
-    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    pointer-events: none;
-    background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(76, 175, 80, 0.1));
-    background-clip: text;
-    padding: 1rem;
-    border-radius: 10px;
-  }
-  
   @media (max-width: 992px) {
     .hero-content {
       flex-direction: column;
@@ -227,11 +206,6 @@
   
     .hero-subtitle {
       font-size: 1.8rem;
-    }
-  
-    .fitness-text {
-      font-size: 7rem;
-      opacity: 0.15;
     }
   }
   
@@ -630,7 +604,7 @@
     bottom: 0;
     background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
   }
   
   .feature-card:hover .feature-overlay {

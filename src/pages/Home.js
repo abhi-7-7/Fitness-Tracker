@@ -182,7 +182,7 @@ const Home = () => {
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-background"></div>
-        <div className="fitness-text">FITNESS</div>
+        <div className="fitness-text"></div>
         <div className="hero-content">
             <div className="hero-text">
               <h1 className="hero-title">Transform Your Body, Transform Your Life</h1>
