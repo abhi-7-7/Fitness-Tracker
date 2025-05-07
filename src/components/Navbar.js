@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
-
+import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
+  const router = useNavigate();
   const [user, setUser] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -35,7 +36,7 @@ const Navbar = () => {
 
   // Simple navigation function
   const goToPage = (path) => {
-    window.location.pathname = path;
+    router(path);
     setMenuOpen(false);
   };
 

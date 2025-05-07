@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -9,39 +10,20 @@ import Signup from './pages/Signup';
 import './App.css';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-
-  useEffect(() => {
-    const path = window.location.pathname;
-    setCurrentPage(path === '/' ? 'home' : path.slice(1));
-  }, []);
-
-// First, it checks if the current path is the root path ('/') using path === '/'
-// Then it uses a ternary operator (? :) to:
-// If the path is '/', set currentPage to 'home'
-// If the path is not '/', it takes the path and removes the first character (the '/') using path.slice(1)
-
-  const renderPage = () => {
-    switch(currentPage) {
-      case 'about':
-        return <About />;
-      case 'services':
-        return <Services />;
-      case 'blog':
-        return <Blog />;
-      case 'login':
-        return <Login />;
-      case 'signup':
-        return <Signup />;
-      default:
-        return <Home />;
-    }
-  };
-
   return (
-    <Layout>
-      {renderPage()}
-    </Layout>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </Layout>
+    </Router>
   );
 }
+
 export default App;

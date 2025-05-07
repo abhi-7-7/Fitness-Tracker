@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+  const router = useNavigate();
   // Simple form state
   const [form, setForm] = useState({
     name: '',
@@ -27,7 +29,8 @@ const Signup = () => {
     };
     localStorage.setItem('user', JSON.stringify(userData));
     // Redirect to home page
-    window.location.pathname = '/';
+    router('/');
+    // window.location.pathname = '/';
   };
 
   return (

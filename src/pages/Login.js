@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
+  const router = useNavigate();
   const [form, setForm] = useState({
     email: '',
     password: ''
@@ -22,7 +23,8 @@ const Login = () => {
     };
     localStorage.setItem('user', JSON.stringify(userData));
     // Redirect to home page
-    window.location.pathname = '/';
+    router('/');
+    // window.location.pathname = '/';
   };
 
   return (
