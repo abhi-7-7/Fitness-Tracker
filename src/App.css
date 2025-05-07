@@ -120,6 +120,7 @@ button, .btn {
   letter-spacing: 0.3px;
   display: inline-block;
   text-align: center;
+  margin-top: auto;
 }
 
 button:hover, .btn:hover {
