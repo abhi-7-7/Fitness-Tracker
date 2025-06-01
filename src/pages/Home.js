@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-
 import './Home.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 const Home = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -19,6 +20,16 @@ const Home = () => {
     setTimeout(() => {setAnimateCards(true);}, 100);
   };
 
+  useEffect(() => {
+    const container = document.querySelector('.testimonial-carousel');
+    const interval = setInterval(() => {
+      if (container) {
+        container.scrollBy({ left: 300, behavior: 'smooth' });
+      }
+    }, 5000);
+  
+    return () => clearInterval(interval);
+  }, []);
   
   useEffect(() => {const observer = new IntersectionObserver(
            (entries) => {
@@ -137,6 +148,93 @@ const Home = () => {
       ]
     }
   ];
+  const testimonials = [
+    {
+      id: 1,
+      name: "Aarav Mehta",
+      photo: "/Michael.jpg",
+      text: "Joining this program completely transformed my fitness journey. Highly recommend!"
+    },
+    {
+      id: 2,
+      name: "Priya Sharma",
+      photo: "/Sarah.jpg",
+      text: "Amazing trainers and personalized guidance. I feel stronger and more confident."
+    },
+    {
+      id: 3,
+      name: "Rohan Verma",
+      photo: "/Michael.jpg",
+      text: "The online coaching fits perfectly with my busy schedule. Worth every rupee!"
+    },
+    {
+      id: 4,
+      name: "Sneha Kapoor",
+      photo: "/Sarah.jpg",
+      text: "Group classes are so fun and effective. Love the community vibe!"
+    },
+    {
+      id: 5,
+      name: "Karan Singh",
+      photo: "/Michael.jpg",
+      text: "Consistent results and amazing motivation from the coaches. Best fitness decision ever!"
+    },
+    {
+      id: 6,
+      name: "Ananya Joshi",
+      photo: "/Sarah.jpg",
+      text: "Their fat-loss routines actually work! I lost 6 kg in just one month."
+    },
+    {
+      id: 7,
+      name: "Vikram Chauhan",
+      photo: "/Michael.jpg",
+      text: "I was skeptical at first, but now I genuinely enjoy working out every day."
+    },
+    {
+      id: 8,
+      name: "Neha Iyer",
+      photo: "/Sarah.jpg",
+      text: "Perfect mix of strength training and flexibility. My energy levels are amazing now."
+    },
+    {
+      id: 9,
+      name: "Siddharth Menon",
+      photo: "/Michael.jpg",
+      text: "As someone recovering from an injury, the modifications offered were a blessing!"
+    },
+    {
+      id: 10,
+      name: "Meera Desai",
+      photo: "/Sarah.jpg",
+      text: "The weekly challenges keep me pumped. So interactive and engaging!"
+    },
+    {
+      id: 11,
+      name: "Arjun Bhatia",
+      photo: "/Michael.jpg",
+      text: "Love how I can train at home with just a mat and still feel the burn!"
+    },
+    {
+      id: 12,
+      name: "Tanvi Reddy",
+      photo: "/Sarah.jpg",
+      text: "Great for busy professionals! I train during lunch breaks and feel refreshed."
+    },
+    {
+      id: 13,
+      name: "Rahul Dey",
+      photo: "/Michael.jpg",
+      text: "I finally feel confident in my body. Thank you for the push and support!"
+    },
+    {
+      id: 14,
+      name: "Simran Kaur",
+      photo: "/Sarah.jpg",
+      text: "This program is not just about workouts—it's a complete mindset shift!"
+    }    
+  ];
+  
 
   useEffect(() => {
     const interval = setInterval(() => {setActiveIndex((current) => (current + 1) % features.length);}, 5000);
@@ -313,25 +411,77 @@ const Home = () => {
           </div>
         </div>
       </section>
-      
-      {/* Content Section */}
-      <div className="content-section">
-        <h1 className="page-title">Welcome to Health & Fitness</h1>
-        <p className="welcome-text">
-          Your journey to a healthier lifestyle starts here. Explore our services,
-          read our blog, and discover how we can help you achieve your fitness goals.
-        </p>
-      </div>
 
-      {/* Footer Section */}
-      <footer className="home-footer">
-        <div className="footer-content">
-          <div className="footer-text">
-            <h2>Ready to Start Your Fitness Journey?</h2>
-            <p>Join our community today and transform your life with expert guidance and support.</p>
+      {/*Testimonials*/}
+      
+      <section className="testimonials-section">
+        <h2 className="section-title">What Our Customers Say</h2>
+        <div className="testimonial-carousel">
+          <div className="testimonial-track">
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.id} className="testimonial-card">
+                {testimonial.photo && (
+                  <div className="testimonial-photo">
+                    <img src={testimonial.photo} alt={`${testimonial.name}'s photo`} />
+                  </div>
+                )}
+                <div className="testimonial-text">“{testimonial.text}”</div>
+                <div className="testimonial-name">— {testimonial.name}</div>
+              </div>
+            ))}
           </div>
         </div>
-      </footer>
+      </section>
+
+
+        {/* Footer Section */}
+        <footer className="about-footer">
+          <div className="footer-container">
+            <div className="footer-section">
+              <h3>Quick Links</h3>
+              <ul className="footer-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/">Contact</a></li>
+                <li><a href="/">Privacy Policy</a></li>
+                <li><a href="/">Terms of Service</a></li>
+              </ul>
+            </div>
+
+            <div className="footer-section">
+              <h3>Contact Us</h3>
+              <ul className="contact-info">
+                <li><i className="fas fa-phone"></i> +91 9999999999</li>
+                <li><i className="fas fa-envelope"></i> info@fitlife.com</li>
+                <li><i className="fas fa-map-marker-alt"></i> 123 Fitness Street Dehradun, Uttarakhand, India</li>
+              </ul>
+            </div>
+
+            <div className="footer-section">
+              <h3>Follow Us</h3>
+              <div className="social-links">
+                <a href="https://facebook.com/fitlife" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                  <i className="fab fa-facebook"></i>
+                </a>
+                <a href="https://twitter.com/fitlife" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                  <i className="fab fa-twitter"></i>
+                </a>
+                <a href="https://linkedin.com/company/fitlife" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <i className="fab fa-linkedin"></i>
+                </a>
+                <a href="https://instagram.com/fitlife" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <i className="fab fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <p>&copy; 2025 FitLife. All rights reserved.</p>
+          </div>
+        </footer>
+
 
       {/* Pricing Modal */}
       {showModal && (
