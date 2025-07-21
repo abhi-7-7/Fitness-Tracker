@@ -21,6 +21,9 @@ const Home = () => {
   };
 
   useEffect(() => {
+    // Scroll to top when the page is opened
+    window.scrollTo(0, 0);
+
     const container = document.querySelector('.testimonial-carousel');
     const interval = setInterval(() => {
       if (container) {
@@ -317,7 +320,7 @@ const Home = () => {
 
 
       <button className="sticky-join-button" onClick={handleOpenPricingModal}>
-        <span className="icon">💪</span> Join Us
+        <span className="icon">💪 _</span>Join Us<span className="icon">_ 💪</span>
       </button>
 
       {/* Feature Carousel Section */}

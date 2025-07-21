@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef ,useState} from 'react';
 import './Services.css';
 
 const Services = () => {
   const heroRef = useRef(null);
-
+  
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -19,17 +19,71 @@ const Services = () => {
         threshold: 0.2
       }
     );
-
+    
     if (heroRef.current) {
       observer.observe(heroRef.current);
     }
-
+    
     return () => {
       if (heroRef.current) {
         observer.unobserve(heroRef.current);
       }
     };
   }, []);
+  
+  const [openIndex, setOpenIndex] = useState(null);
+  
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+const faqData = [
+  {
+    question: 'How do I purchase a product?',
+    answer: 'You can purchase products via our website. Add them to your cart and complete checkout securely.',
+  },
+  {
+    question: 'What is the duration of the service?',
+    answer: 'Service durations vary—details are listed on each individual service page.',
+  },
+  {
+    question: 'Is there a money-back guarantee?',
+    answer: 'Yes, we offer a 7-day money-back guarantee if you are not satisfied.',
+  },
+  {
+    question: 'Can I cancel my subscription anytime?',
+    answer: 'Yes, you can cancel at any time from your account settings.',
+  },
+  {
+    question: 'Do you offer online consultations?',
+    answer: 'Absolutely! We provide video consultations for training and nutrition plans.',
+  },
+  {
+    question: 'Are your trainers certified?',
+    answer: 'All our trainers are certified professionals with years of experience.',
+  },
+  {
+    question: 'Is there a mobile app available?',
+    answer: 'Yes, our FitLife app is available on both Android and iOS platforms.',
+  },
+  {
+    question: 'Do you provide meal plans?',
+    answer: 'Yes, custom meal plans are included in our nutrition planning services.',
+  },
+  {
+    question: 'Can beginners join group classes?',
+    answer: 'Yes, we have beginner-friendly classes and sessions designed for all fitness levels.',
+  },
+  {
+    question: 'Do I need equipment for home workouts?',
+    answer: 'Most home workouts require no equipment, but some may suggest resistance bands or dumbbells.',
+  }
+];
+
 
   return (
     <div className="services-page">
@@ -49,7 +103,7 @@ const Services = () => {
             </p>
             <div className="services-hero-cta">
               <a href="#services-grid" className="cta-button primary">Explore Services</a>
-              <a href="/contact" className="cta-button secondary">Get Started</a>
+              <a href="/" className="cta-button secondary">Get Started</a>
             </div>
           </div>
         </div>
@@ -86,6 +140,28 @@ const Services = () => {
             <a href="/services/nutrition" className="service-link">Learn More</a>
           </div>
         </div>
+        </section>
+        
+        {/* FAQ Section */}
+
+        <section className="faq-section">
+          <h2 className="faq-title">Frequently Asked Questions</h2>
+          <div className="faq-container">
+            {faqData.map((item, index) => (
+              <div
+                key={index}
+                className={`faq-item ${openIndex === index ? 'open' : ''}`}
+              >
+                <button className="faq-question" onClick={() => toggleFAQ(index)}>
+                  {item.question}
+                  <span className="faq-icon">{openIndex === index ? '−' : '+'}</span>
+                </button>
+                <div className="faq-answer">
+                  <p>{item.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </section>
               {/* Footer Section */}
               <footer className="about-footer">

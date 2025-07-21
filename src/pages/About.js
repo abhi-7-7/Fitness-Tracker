@@ -90,6 +90,9 @@ const About = () => {
   }, []);
 
   useEffect(() => {
+    // Scroll to top when the page is changed
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
     // Handle scroll animations
     const handleScroll = () => {
       // Calculate scroll progress
