@@ -726,19 +726,20 @@
     }
   }
   
-  /* Add smooth scroll behavior to the entire page */
+  
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Adjust based on your header height */
+    scroll-padding-top: 80px; 
+    
   }
   
-  /* Add scroll margin to all sections */
+  
   .about-hero-section,
   .content-section,
   .history-section,
   .mission-vision-section,
   .team-section {
-    scroll-margin-top: 80px; /* Match the header height */
+    scroll-margin-top: 80px;
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -753,10 +754,10 @@
     transform: translateY(0);
   }
   
-  /* Adjust scroll progress indicator */
+  
   .scroll-progress {
     position: fixed;
-    top: 80px; /* Position below nav bar */
+    top: 80px; 
     left: 0;
     width: 100%;
     height: 3px;
@@ -767,7 +768,7 @@
     transition: transform 0.1s ease-out;
   }
   
-  /* Add scroll to top button */
+  
   .scroll-to-top {
     position: fixed;
     bottom: 30px;
@@ -802,7 +803,7 @@
     box-shadow: 0 6px 15px rgba(255, 193, 7, 0.4);
   }
   
-  /* Enhance carousel scrolling */
+  
   .team-carousel {
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
@@ -813,23 +814,23 @@
     scroll-snap-stop: always;
   }
   
-  /* Add smooth scroll for timeline */
+  
   .timeline {
     scroll-margin-top: 100px;
   }
   
-  /* Add smooth scroll for mission and vision sections */
+  
   .mission-section,
   .vision-section {
     scroll-margin-top: 100px;
   }
   
-  /* Add smooth scroll for team section */
+  
   .team-section {
     scroll-margin-top: 100px;
   }
   
-  /* Add scroll-triggered animations */
+  
   .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -841,21 +842,21 @@
     transform: translateY(0);
   }
   
-  /* Add smooth scroll for navigation links */
+  
   .nav-link {
     scroll-behavior: smooth;
     transition: all 0.3s ease;
   }
   
-  /* Add smooth scroll for section transitions */
+  
   .section-transition {
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
-  /* Add smooth scroll for mobile */
+  
   @media (max-width: 768px) {
     html {
-      scroll-padding-top: 60px; /* Adjust for mobile header height */
+      scroll-padding-top: 60px; 
     }
     
     .scroll-to-top {
@@ -867,7 +868,7 @@
     }
   }
   
-  /* Add smooth scroll for touch devices */
+  
   @media (hover: none) {
     .team-carousel {
       -webkit-overflow-scrolling: touch;
@@ -879,7 +880,7 @@
     }
   }
   
-  /* Mission and Vision Sections */
+  
   .mission-vision-section {
     background: linear-gradient(135deg, #2E3B2E 0%, #1a231a 100%);
     padding: 6rem 4rem;
@@ -1062,7 +1063,7 @@
     font-weight: 400;
   }
   
-  /* Responsive Design for Mission and Vision */
+  
   @media (max-width: 1200px) {
     .mission-vision-container {
       gap: 2rem;
@@ -1216,7 +1217,7 @@
     line-height: 1.6;
   }
   
-  /* Responsive Design for Mission and Vision Points */
+  
   @media (max-width: 1200px) {
     .mission-points,
     .vision-points {
@@ -1269,7 +1270,7 @@
     }
   }
   
-  /* Team Section Styles */
+  
   .team-section {
     background: linear-gradient(135deg, #2E3B2E 0%, #1a231a 100%);
     padding: 8rem 4rem;
@@ -1381,6 +1382,7 @@
   
   .team-carousel-container::before {
     left: 20px;
+    /* help from youtube for left arrow */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FFC107'%3E%3Cpath d='M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z'/%3E%3C/svg%3E");
     background-size: 24px;
     background-position: center;
@@ -1389,6 +1391,7 @@
   
   .team-carousel-container::after {
     right: 20px;
+    /* help from youtube for right arrow */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FFC107'%3E%3Cpath d='M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z'/%3E%3C/svg%3E");
     background-size: 24px;
     background-position: center;
@@ -1771,7 +1774,7 @@
     transform: scale(1.1);
   }
   
-  /* Responsive Design for New Elements */
+  
   @media (max-width: 1200px) {
     .social-link {
       width: 40px;
@@ -1844,7 +1847,7 @@
     }
   }
   
-  /* Footer Styles */
+  
   .about-footer {
     background-color: #1a1a1a;
     color: #ffffff;
@@ -1958,7 +1961,7 @@
     font-size: 0.9rem;
   }
   
-  /* Responsive Footer */
+  
   @media (max-width: 768px) {
     .footer-container {
       grid-template-columns: 1fr;

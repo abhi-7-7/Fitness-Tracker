@@ -1,4 +1,4 @@
-/* Services Page Styles */
+
 .services-page {
   min-height: 100vh;
   background: linear-gradient(135deg, #2E3B2E 0%, #1a231a 100%);
@@ -7,7 +7,7 @@
   overflow-x: hidden;
 }
 
-/* Hero Section Styles */
+
 .services-hero-section {
   position: relative;
   height: 85vh;
@@ -331,7 +331,7 @@
   box-shadow: 0 10px 20px rgba(255, 193, 7, 0.2);
 }
 
-/* Responsive Design */
+
 @media (max-width: 1200px) {
   .services-hero-content {
     padding: 0 4rem;

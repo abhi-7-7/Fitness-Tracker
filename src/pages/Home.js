@@ -21,7 +21,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-    // Scroll to top when the page is opened
     window.scrollTo(0, 0);
 
     const container = document.querySelector('.testimonial-carousel');

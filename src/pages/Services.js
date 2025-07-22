@@ -34,7 +34,7 @@ const Services = () => {
   const [openIndex, setOpenIndex] = useState(null);
   
   const toggleFAQ = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
+    setOpenIndex(openIndex != index  ? index : null);
   };
   
   useEffect(() => {

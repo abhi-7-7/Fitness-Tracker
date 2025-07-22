@@ -95,6 +95,7 @@ const Blog = () => {
             <div className="carousel-content">
               <h3 className="carousel-title">{post.title}</h3>
               <p className="carousel-description">{post.description}</p>
+              <a className="read-more-link" href="#">Read More</a>
               <p className="carousel-author">By {post.author}</p>
             </div>
           </div>

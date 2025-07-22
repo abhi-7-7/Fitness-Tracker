@@ -22,7 +22,7 @@ const About = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Add a small delay based on the element's position
+          
           const delay = entry.target.dataset.delay || 0;
           setTimeout(() => {
             entry.target.classList.add('animate');
@@ -35,34 +35,34 @@ const About = () => {
       });
     }, observerOptions);
 
-    // Observe timeline items with staggered delays
+    
     const timelineItems = document.querySelectorAll('.timeline-item');
     timelineItems.forEach((item, index) => {
-      item.dataset.delay = index * 150; // 150ms delay between each item
+      item.dataset.delay = index * 150; 
       observer.observe(item);
     });
 
-    // Observe content section
+    
     if (contentRef.current) {
       observer.observe(contentRef.current);
     }
 
-    // Observe hero section
+    
     if (heroRef.current) {
       observer.observe(heroRef.current);
     }
 
-    // Observe mission section
+    
     if (missionRef.current) {
       observer.observe(missionRef.current);
     }
 
-    // Observe vision section
+    
     if (visionRef.current) {
       observer.observe(visionRef.current);
     }
 
-    // Observe image
+    
     if (imageRef.current) {
       observer.observe(imageRef.current);
     }
@@ -90,20 +90,21 @@ const About = () => {
   }, []);
 
   useEffect(() => {
-    // Scroll to top when the page is changed
+    
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // Handle scroll animations
+    
     const handleScroll = () => {
-      // Calculate scroll progress
+      
+      
       const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
       const currentProgress = (window.scrollY / totalScroll) * 100;
       setScrollProgress(currentProgress);
 
-      // Show/hide scroll to top button
+      
       setShowScrollTop(window.scrollY > 500);
 
-      // Animate sections on scroll
+      
       const sections = document.querySelectorAll('.about-hero-section, .content-section, .history-section, .mission-vision-section, .team-section');
       sections.forEach(section => {
         const sectionTop = section.getBoundingClientRect().top;
@@ -113,7 +114,7 @@ const About = () => {
         }
       });
 
-      // Animate fade-in elements
+      
       const fadeElements = document.querySelectorAll('.fade-in');
       fadeElements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
@@ -124,7 +125,7 @@ const About = () => {
       });
     };
 
-    // Handle scroll to top
+    
     const scrollToTop = () => {
       window.scrollTo({
         top: 0,
@@ -132,19 +133,18 @@ const About = () => {
       });
     };
 
-    // Add scroll event listener
+    
     window.addEventListener('scroll', handleScroll);
     
-    // Add click event listener for scroll to top button
+    
     const scrollTopButton = document.querySelector('.scroll-to-top');
     if (scrollTopButton) {
       scrollTopButton.addEventListener('click', scrollToTop);
     }
 
-    // Initial check for animations
+    
     handleScroll();
 
-    // Cleanup
     return () => {
       window.removeEventListener('scroll', handleScroll);
       if (scrollTopButton) {
@@ -155,13 +155,10 @@ const About = () => {
 
   return (
     <div className="about-page">
-      {/* Add scroll progress indicator */}
       <div 
         className="scroll-progress" 
         style={{ transform: `scaleX(${scrollProgress / 100})` }}
       />
-
-      {/* Add scroll to top button */}
       <button 
         className={`scroll-to-top ${showScrollTop ? 'visible' : ''}`}
         aria-label="Scroll to top"
